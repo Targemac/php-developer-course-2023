@@ -102,3 +102,17 @@ try {
 }
 
 echo "fininshed running script";
+
+
+
+/** 
+ * 
+ * DateTime
+ */
+$timezone = new DateTimeZone("America/Chicago");
+$date = new DateTime("12/22/78", $timezone);
+$date->setTimezone(new DateTimeZone("Europe/Paris"))->setDate(2023,6,15)->setTime(9,30);
+
+echo "<pre>";
+var_dump($date->format("F j Y"));
+echo "</pre>";
