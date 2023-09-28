@@ -12,9 +12,26 @@
  * 
  * diff between astract and interface
  * 
- * --abstarct classes
+ * ***abstarct classes***
  * -methods may have implementation
  * -properties allowed
  * -public, private, protected are allowed
  * -only one class can be extended
+ * 
+ * ***interfaces***
+ * -methods may not have implementations
+ * -properties not allowed, constants allowed
+ * -only public methods allowed
+ * -multiple interfaces an be implemented
  */
+
+ /**
+  * anonymous classes
+  *- supports all features of a regular class
+  *
+  *
+  *
+  *
+  *
+  
+  */

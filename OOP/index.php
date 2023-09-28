@@ -27,7 +27,7 @@ spl_autoload_register(
  */
 
 //(import multiple classes in from same namespace with curly braces)
-use App\{Account, Account2, SocialMedia, Utility, ToasterPremium, AbstractProduct, RestaurantOne, RestaurantTwo, FoodApp};
+use App\{Account, Account2, SocialMedia, Utility, ToasterPremium, AbstractProduct, RestaurantOne, RestaurantTwo, FoodApp, RestaurantInterface};
 
 /**
  * use App\Account;
@@ -69,4 +69,17 @@ $myToaster = new ToasterPremium(9);
 $myToaster->toast();
 echo "<br/>";
 
-$restaurant = new FoodApp(new RestaurantOne);
+// $restaurant = new FoodApp(new RestaurantOne);
+
+// anonymouse class
+$restaurant = new FoodApp(new class("popup") implements RestaurantInterface
+{
+    public function __construct(public string $name)
+    {
+    }
+
+    public function prepareFood()
+    {
+        echo "{$this->name} restaurant preparing food";
+    }
+});
