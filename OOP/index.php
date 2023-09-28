@@ -27,7 +27,7 @@ spl_autoload_register(
  */
 
 //(import multiple classes in from same namespace with curly braces)
-use App\{Account, Account2, SocialMedia, Utility, ToasterPremium, AbstractProduct, RestaurantOne, RestaurantTwo, FoodApp, RestaurantInterface};
+use App\{Account, Account2, SocialMedia, Utility, ToasterPremium, AbstractProduct, EmptyArrayException, RestaurantOne, RestaurantTwo, FoodApp, RestaurantInterface};
 
 /**
  * use App\Account;
@@ -45,7 +45,6 @@ var_dump($myAccount::INTEREST_RATE); //2 columns are known as scope resolution o
 var_dump(Account::INTEREST_RATE); // scope resolution operator can also be accessed from the class directly
 var_dump(Account::$count); // accessing static variable
 
-Utility::printArr([25, 42, 62, 636]);
 
 // echo $myAccount->balance; //
 
@@ -83,3 +82,23 @@ $restaurant = new FoodApp(new class("popup") implements RestaurantInterface
         echo "{$this->name} restaurant preparing food";
     }
 });
+echo "<br/>";
+
+Utility::printArr([25, 42, 62, 636]);
+
+echo "<br/>";
+
+try {
+    //code...
+    Utility::printArr([]);
+} catch (InvalidArgumentException | EmptyArrayException $e) {
+    // /chain first error
+    echo "Custome exception: {$e->getMessage()}<br/>";
+} catch (Exception $e) {
+    // chaining multiple error
+    echo "Default exception: {$e->getMessage()}<br/>";
+} finally {
+    echo "Finally block <br/>";
+}
+
+echo "fininshed running script";
