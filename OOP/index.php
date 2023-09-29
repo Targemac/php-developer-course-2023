@@ -27,7 +27,7 @@ spl_autoload_register(
  */
 
 //(import multiple classes in from same namespace with curly braces)
-use App\{Account, Account2, SocialMedia, Utility, ToasterPremium, AbstractProduct, EmptyArrayException, RestaurantOne, RestaurantTwo, FoodApp, RestaurantInterface};
+use App\{Account, Account2, SocialMedia, Utility, ToasterPremium, AbstractProduct, CurrentWeek, EmptyArrayException, RestaurantOne, RestaurantTwo, FoodApp, RestaurantInterface};
 
 /**
  * use App\Account;
@@ -111,8 +111,27 @@ echo "fininshed running script";
  */
 $timezone = new DateTimeZone("America/Chicago");
 $date = new DateTime("12/22/78", $timezone);
-$date->setTimezone(new DateTimeZone("Europe/Paris"))->setDate(2023,6,15)->setTime(9,30);
+$date->setTimezone(new DateTimeZone("Europe/Paris"))->setDate(2023, 6, 15)->setTime(9, 30);
 
 echo "<pre>";
 var_dump($date->format("F j Y"));
 echo "</pre>";
+
+
+/** 
+ * 
+ * DateTime
+ */
+
+$currentWeek = new CurrentWeek();
+
+function foo(iterable $iterable)
+{
+
+    foreach ($iterable as $key => $value) {
+        var_dump($key, $value);
+        echo "<br/>";
+    }
+}
+
+foo($currentWeek);
